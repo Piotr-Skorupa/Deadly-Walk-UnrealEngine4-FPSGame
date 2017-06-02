@@ -11,7 +11,7 @@ void AFPSGameGameModeBase::StartPlay()
 	{
 		// Display a debug message for five seconds. 
 		// The -1 "Key" value (first argument) indicates that we will never need to update or refresh this message.
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Pierwszy FPS - Piotr Skorupa !"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Deadly Walk v1.0"));
 	}
 }
 
