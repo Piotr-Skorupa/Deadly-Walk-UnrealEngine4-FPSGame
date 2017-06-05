@@ -12,12 +12,16 @@ class FPSGAME_API AFPSCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
+	
 	// Sets default values for this character's properties
 	AFPSCharacter();
 	
 protected:
+	// variables
+	bool _isSprint;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
 
 public:	
 	// Called every frame
@@ -44,6 +48,12 @@ public:
 	// Function that handles firing projectiles.
 	UFUNCTION()
 		void Fire();
+	// Function that changing sprint variable.
+	UFUNCTION()
+		void SprintStart();
+	// Function that changing sprint variable.
+	UFUNCTION()
+		void SprintStop();
 
 	// FPS camera.
 	UPROPERTY(VisibleAnywhere)
