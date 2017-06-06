@@ -8,7 +8,7 @@
 // Sets default values
 AFPSCharacter::AFPSCharacter()
 {
-	_isSprint = false;
+	
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -66,26 +66,21 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAxis("Turn", this, &AFPSCharacter::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("LookUp", this, &AFPSCharacter::AddControllerPitchInput);
 	// Set up "action" bindings.
+	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &AFPSCharacter::SprintStart);
+	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &AFPSCharacter::SprintStop);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AFPSCharacter::StartJump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AFPSCharacter::StopJump);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
-	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &AFPSCharacter::SprintStart);
-	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &AFPSCharacter::SprintStop);
-
+		
 }
 
 void AFPSCharacter::MoveForward(float Value)
 {
-	if (_isSprint == true) {
-		Value *= 4;
-		FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
-		AddMovementInput(Direction, Value);
-	}
-	else {
-		// Find out which way is "forward" and record that the player wants to move that way.
-		FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
-		AddMovementInput(Direction, Value);
-	}
+	
+	// Find out which way is "forward" and record that the player wants to move that way.
+	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
+	AddMovementInput(Direction, Value);
+	
 }
 
 void AFPSCharacter::MoveRight(float Value)
@@ -138,11 +133,13 @@ void AFPSCharacter::Fire()
 }
 
 void AFPSCharacter::SprintStart()
-{
-	_isSprint = true;
+{	
+	GetCharacterMovement()->MaxWalkSpeed = 1100;
 }
 
 void AFPSCharacter::SprintStop()
-{
-	_isSprint = false;
+{	
+	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
+
+	

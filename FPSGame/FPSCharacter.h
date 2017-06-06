@@ -17,8 +17,7 @@ public:
 	AFPSCharacter();
 	
 protected:
-	// variables
-	bool _isSprint;
+		
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
@@ -54,6 +53,7 @@ public:
 	// Function that changing sprint variable.
 	UFUNCTION()
 		void SprintStop();
+	
 
 	// FPS camera.
 	UPROPERTY(VisibleAnywhere)
