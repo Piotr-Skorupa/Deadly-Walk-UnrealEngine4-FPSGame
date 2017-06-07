@@ -71,6 +71,9 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AFPSCharacter::StartJump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AFPSCharacter::StopJump);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
+	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &AFPSCharacter::StartCrouch);
+	PlayerInputComponent->BindAction("Crouch", IE_Released, this, &AFPSCharacter::StopCrouch);
+	PlayerInputComponent->BindAction("Use", IE_Pressed, this, &AFPSCharacter::UsingObject);
 		
 }
 
@@ -142,4 +145,18 @@ void AFPSCharacter::SprintStop()
 	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
 
+void AFPSCharacter::StartCrouch() 
+{
+
+}
+
+void AFPSCharacter::StopCrouch()
+{
+
+}
+
+void AFPSCharacter::UsingObject()
+{
+
+}
 	

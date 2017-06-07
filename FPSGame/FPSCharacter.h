@@ -53,6 +53,17 @@ public:
 	// Function that changing sprint variable.
 	UFUNCTION()
 		void SprintStop();
+	// Function of crouching
+	UFUNCTION()
+		void StartCrouch();
+	// Function of crouching
+	UFUNCTION()
+		void StopCrouch();
+
+	//Using some objects in the game
+	UFUNCTION()
+		void UsingObject();
+
 	
 
 	// FPS camera.
