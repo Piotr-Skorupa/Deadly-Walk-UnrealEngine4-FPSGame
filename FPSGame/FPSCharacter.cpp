@@ -33,7 +33,8 @@ AFPSCharacter::AFPSCharacter()
 
 	// The owning player doesn't see the regular (third-person) body mesh.
 	GetMesh()->SetOwnerNoSee(true);
-
+	//Character can crouch
+	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
 }
 
 // Called when the game starts or when spawned
@@ -147,13 +148,22 @@ void AFPSCharacter::SprintStop()
 
 void AFPSCharacter::StartCrouch() 
 {
-
+	if (GetCharacterMovement())
+	{
+		if (CanCrouch())
+		{
+			GetCharacterMovement()->bWantsToCrouch = true;
+			//bIsCrouched = true;
+		}
+	}
 }
 
 void AFPSCharacter::StopCrouch()
 {
-
+	GetCharacterMovement()->bWantsToCrouch = false;
 }
+
+
 
 void AFPSCharacter::UsingObject()
 {
